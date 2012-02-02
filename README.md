@@ -78,6 +78,20 @@ modify the username.
 Note that the `user.username` attribute will always return the email address, 
 but behind the scenes it will be stored as a hashed version of the user's email.
 
+Authenticating users
+--------------------
+
+You should use `email` and `password` keyword args in calls to `authenticate`,
+rather than the usual `username` and `password`.
+
+    from django.contrib.auth import authenticate
+    
+    user = authenticate(email='someone@example.com', password='password')
+    if user:
+        ...
+    else:
+        ...
+
 User Forms
 ----------
 
