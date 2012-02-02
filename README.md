@@ -69,17 +69,20 @@ user exists.
 Updating users
 --------------
 
-You can update a user's email and save the instance, without having to also modify the username.
+You can update a user's email and save the instance, without having to also 
+modify the username.
 
     user.email = 'other@example.com'
     user.save()
 
-Note that the `user.username` attribute will always return the email address, but behind the scenes it will be stored as a hashed version of the user's email.
+Note that the `user.username` attribute will always return the email address, 
+but behind the scenes it will be stored as a hashed version of the user's email.
 
 User Forms
 ----------
 
-`emailusernames` provides the following forms that you can use for authenticating, creating and updating users:
+`emailusernames` provides the following forms that you can use for 
+authenticating, creating and updating users:
 
 * `emailusernames.forms.EmailAuthenticationForm`
 * `emailusernames.forms.EmailAdminAuthenticationForm`
