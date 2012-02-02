@@ -79,7 +79,7 @@ Note that the `user.username` attribute will always return the email address, bu
 User Forms
 ----------
 
-`emailusernames` provides the following several forms that you can use for authenticating, creating and updating users:
+`emailusernames` provides the following forms that you can use for authenticating, creating and updating users:
 
 * `emailusernames.forms.EmailAuthenticationForm`
 * `emailusernames.forms.EmailAdminAuthenticationForm`
