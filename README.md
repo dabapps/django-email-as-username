@@ -103,8 +103,8 @@ authenticating, creating and updating users:
 * `emailusernames.forms.UserCreationForm`
 * `emailusernames.forms.UserChangeForm`
 
-Using Django's built-in `login` view
-------------------------------------
+Using Django's built-in login view
+----------------------------------
 
 If you're using `django.contrib.auth.views.login` in your urlconf, you'll want to
 make sure you pass through `EmailAuthenticationForm` as an argument to the view.
