@@ -21,7 +21,7 @@ class EmailAuthenticationForm(AuthenticationForm):
     message_inactive = ERROR_MESSAGE_INACTIVE
 
     def __init__(self, *args, **kwargs):
-        super(EmailAdminAuthenticationForm, self).__init__(*args, **kwargs)
+        super(EmailAuthenticationForm, self).__init__(*args, **kwargs)
         del self.fields['username']
 
     def clean(self):
