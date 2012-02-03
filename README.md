@@ -116,6 +116,18 @@ make sure you pass through `EmailAuthenticationForm` as an argument to the view.
         ...
     )
 
+Changelog
+=========
+
+1.1.0
+-----
+
+* Fix bug in EmailAuthenticationForm
+
+1.0.0
+-----
+
+* Initial release
 
 License
 =======
