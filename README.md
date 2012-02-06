@@ -119,6 +119,11 @@ make sure you pass through `EmailAuthenticationForm` as an argument to the view.
 Changelog
 =========
 
+1.2.0
+-----
+
+* Fix import bug in `createsuperuser` managment command.
+
 1.1.0
 -----
 

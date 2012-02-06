@@ -11,7 +11,7 @@ from django.contrib.auth.models import User
 from django.core import exceptions
 from django.core.management.base import BaseCommand, CommandError
 from django.utils.translation import ugettext as _
-from email_as_username.utils import create_superuser
+from emailusernames.utils import create_superuser
 
 
 RE_VALID_USERNAME = re.compile('[\w.@+-]+$')
