@@ -21,7 +21,7 @@ def get_packages(root):
     Return root package and all sub-packages.
     """
     return [x[0] for x in os.walk(root)
-        if os.path.exists(os.path.join(x[0], '__init__.py'))]
+            if os.path.exists(os.path.join(x[0], '__init__.py'))]
 
 
 def get_package_data(root):
@@ -29,7 +29,8 @@ def get_package_data(root):
     Return all files under the root package, that are not in a
     package themselves.
     """
-    walk = [(x[0].lstrip(root + os.sep), x[2]) for x in os.walk(root)
+    walk = [(x[0].replace(root + os.sep, '', 1), x[2])
+            for x in os.walk(root)
             if not os.path.exists(os.path.join(x[0], '__init__.py'))]
 
     file_list = []
