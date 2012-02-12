@@ -18,7 +18,7 @@ def get_user(email):
     Return the user with given email address.
     Note that email address matches are case-insensitive.
     """
-    return User.objects.get(email__iexact=email)
+    return User.objects.get(username=_email_to_username(email))
 
 
 def user_exists(email):
