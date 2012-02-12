@@ -15,8 +15,6 @@ from django.utils.translation import ugettext as _
 from emailusernames.utils import create_superuser
 
 
-RE_VALID_USERNAME = re.compile('[\w.@+-]+$')
-
 def is_valid_email(value):
     if not email_re.search(value):
         raise exceptions.ValidationError(_('Enter a valid e-mail address.'))
