@@ -11,8 +11,7 @@ from django.contrib.auth.models import User
 from django.core import exceptions
 from django.core.management.base import BaseCommand, CommandError
 from django.utils.translation import ugettext as _
-from emailusernames.utils import create_superuser
-
+from emailusernames.utils import get_user, create_superuser
 
 RE_VALID_USERNAME = re.compile('[\w.@+-]+$')
 
@@ -72,7 +71,7 @@ class Command(BaseCommand):
                         email = None
 
                     try:
-                        User.objects.get(email__iexact=email)
+                        get_user(email)
                     except User.DoesNotExist:
                         break
                     else:
