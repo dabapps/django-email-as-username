@@ -8,7 +8,7 @@ from emailusernames.forms import EmailUserCreationForm, EmailUserChangeForm
 from django.utils.translation import ugettext_lazy as _
 
 
-class EmailLoginAdmin(UserAdmin):
+class EmailUserAdmin(UserAdmin):
     add_form = EmailUserCreationForm
     form = EmailUserChangeForm
 
@@ -26,10 +26,11 @@ class EmailLoginAdmin(UserAdmin):
         (_('Groups'), {'fields': ('groups',)}),
     )
     list_display = ('email', 'first_name', 'last_name', 'is_staff')
+    ordering = ('email',)
 
 
 admin.site.unregister(User)
-admin.site.register(User, EmailLoginAdmin)
+admin.site.register(User, EmailUserAdmin)
 
 
 def __email_unicode__(self):
