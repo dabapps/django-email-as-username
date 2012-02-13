@@ -188,6 +188,14 @@ Don't forget to restart your Django instance again!
 Changelog
 =========
 
+1.3.0
+-----
+
+* Use hashed username lookups for performance.
+* Use Django's email regex validator, rather than providing our own version.
+* Tweaks to admin.
+* Tweaks to documentation and notes on upgrading. 
+
 1.2.0
 -----
 
