@@ -12,8 +12,7 @@ from django.core import exceptions
 from django.core.management.base import BaseCommand, CommandError
 from django.core.validators import email_re
 from django.utils.translation import ugettext as _
-from emailusernames.utils import create_superuser
-
+from emailusernames.utils import get_user, create_superuser
 
 def is_valid_email(value):
     if not email_re.search(value):
@@ -65,7 +64,7 @@ class Command(BaseCommand):
                         email = None
 
                     try:
-                        User.objects.get(email__iexact=email)
+                        get_user(email)
                     except User.DoesNotExist:
                         break
                     else:
