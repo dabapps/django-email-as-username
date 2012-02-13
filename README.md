@@ -100,8 +100,8 @@ authenticating, creating and updating users:
 
 * `emailusernames.forms.EmailAuthenticationForm`
 * `emailusernames.forms.EmailAdminAuthenticationForm`
-* `emailusernames.forms.UserCreationForm`
-* `emailusernames.forms.UserChangeForm`
+* `emailusernames.forms.EmailUserCreationForm`
+* `emailusernames.forms.EmailUserChangeForm`
 
 Using Django's built-in login view
 ----------------------------------
