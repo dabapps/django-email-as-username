@@ -116,6 +116,75 @@ make sure you pass through `EmailAuthenticationForm` as an argument to the view.
         ...
     )
 
+Upgrading
+=========
+
+Once you have implemented emails as usernames, you're ready to convert any
+existing users.
+
+First, in order to modify the original usernames, temporarily remove the
+'emailusernames' app from `settings.INSTALLED_APPS`:
+
+    INSTALLED_APPS = (
+        ...
+        #'emailusernames',
+    )
+
+You will need to restart your Django instance to activate this change.
+
+Then, within the Django project's environment (e.g., in `python manage.py
+shell`, run this code:
+
+    from django.db                  import IntegrityError, transaction
+    from django.conf                import settings
+    from django.contrib.auth.models import User
+    from emailusernames.utils       import _email_to_username
+
+    # Print a nice header.
+
+    title   = 'Upgrading: No More Usernames!'
+    border  = len(title) + 2
+
+    print('')
+    print('=' * border)
+    print('%s' % title)
+
+    # Upgrade database.
+
+    tot    = User.objects.count()
+    failed = 0
+
+    for user in User.objects.all():
+        user.username = _email_to_username(user.email)
+        try:
+            sid = transaction.savepoint()
+            user.save()
+            transaction.savepoint_commit(sid)
+        except IntegrityError:
+            failed += 1
+            print(
+                "Could not convert user with username '%s' because the email "
+                "<%s> is already taken." % (user.username, user.email)
+            )
+            transaction.savepoint_rollback(sid)
+
+    print("Converted %d of %d users (%d failed)." % (tot - failed, tot, failed))
+    print('=' * border)
+
+If any user shares an email address with another user, it cannot be converted
+as usernames must be unique. This script will convert as many as possible and
+any other users that cannot be converted will be printed.
+
+Finally, re-enable the 'emailusernames' app by uncommenting the line in
+`settings.INSTALLED_APPS`:
+
+    INSTALLED_APPS = (
+        ...
+        'emailusernames',
+    )
+
+Don't forget to restart your Django instance again!
+
 Changelog
 =========
 
