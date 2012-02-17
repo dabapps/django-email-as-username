@@ -191,6 +191,7 @@ Changelog
 1.3.0
 -----
 
+* Authentication backend now sets `User.backend`.
 * Use hashed username lookups for performance.
 * Use Django's email regex validator, rather than providing our own version.
 * Tweaks to admin.
