@@ -14,6 +14,7 @@ class EmailAuthBackend(object):
         try:
             user = get_user(email)
             if user.check_password(password):
+                user.backend = "%s.%s" % (self.__module__, self.__class__.__name__)
                 return user
         except User.DoesNotExist:
             return None
