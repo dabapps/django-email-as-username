@@ -127,8 +127,8 @@ The migration will refuse to run if there are any users that it cannot migrate e
 There are two ways you might choose to run this migration.
 
 
-Run the migration manually
---------------------------
+Run the update manually
+-----------------------
 
 Using `manage.py shell`:
 
