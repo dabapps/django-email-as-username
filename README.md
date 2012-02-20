@@ -116,77 +116,53 @@ make sure you pass through `EmailAuthenticationForm` as an argument to the view.
         ...
     )
 
-Upgrading
-=========
+Migrating existing projects
+===========================
 
-Once you have implemented emails as usernames, you're ready to convert any
-existing users.
+`emailusernames` includes a function you can use to easily migrate existing
+projects.
 
-First, in order to modify the original usernames, temporarily remove the
-'emailusernames' app from `settings.INSTALLED_APPS`:
+The migration will refuse to run if there are any users that it cannot migrate either because they do not have an email set, or because there exists a duplicate email for more than one user.
 
-    INSTALLED_APPS = (
-        ...
-        #'emailusernames',
-    )
+There are two ways you might choose to run this migration.
 
-You will need to restart your Django instance to activate this change.
 
-Then, within the Django project's environment (e.g., in `python manage.py
-shell`, run this code:
+Run the migration manually
+--------------------------
 
-    from django.db                  import IntegrityError, transaction
-    from django.conf                import settings
-    from django.contrib.auth.models import User
-    from emailusernames.utils       import _email_to_username
+Using `manage.py shell`:
 
-    # Print a nice header.
+    bash: python ./manage.py shell
+    >>> from emailusernames.utils import migrate_usernames
+    >>> migrate_usernames()
+    Successfully migrated usernames for all 12 users
 
-    title   = 'Upgrading: No More Usernames!'
-    border  = len(title) + 2
+Run as a data migration
+-----------------------
 
-    print('')
-    print('=' * border)
-    print('%s' % title)
+Using `south` this might look something like:
 
-    # Upgrade database.
+    bash: python ./manage.py datamigration accounts email_usernames
+    Created 0002_email_usernames.py.
 
-    tot    = User.objects.count()
-    failed = 0
+Now edit `0002_email_usernames.py`:
 
-    for user in User.objects.all():
-        user.username = _email_to_username(user.email)
-        try:
-            sid = transaction.savepoint()
-            user.save()
-            transaction.savepoint_commit(sid)
-        except IntegrityError:
-            failed += 1
-            print(
-                "Could not convert user with username '%s' because the email "
-                "<%s> is already taken." % (user.username, user.email)
-            )
-            transaction.savepoint_rollback(sid)
+    def forwards(self, orm):
+        "Write your forwards methods here."
+        migrate_usernames()
 
-    print("Converted %d of %d users (%d failed)." % (tot - failed, tot, failed))
-    print('=' * border)
+And finally apply the migration:
 
-If any user shares an email address with another user, it cannot be converted
-as usernames must be unique. This script will convert as many as possible and
-any other users that cannot be converted will be printed.
+	python ./manage.py migrate accounts
 
-Finally, re-enable the 'emailusernames' app by uncommenting the line in
-`settings.INSTALLED_APPS`:
-
-    INSTALLED_APPS = (
-        ...
-        'emailusernames',
-    )
-
-Don't forget to restart your Django instance again!
 
 Changelog
 =========
+
+1.4.0
+-----
+
+* Easier migrations, using `migrate_usernames()`
 
 1.3.1
 -----

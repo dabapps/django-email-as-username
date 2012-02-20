@@ -1,7 +1,10 @@
 import base64
 import hashlib
+import os
+import sys
+
 from django.contrib.auth.models import User
-from django.db import IntegrityError
+from django.db import IntegrityError, transaction
 
 
 # We need to convert emails to hashed versions when we store them in the
@@ -60,3 +63,38 @@ def create_superuser(email, password):
     Use this instead of `User.objects.create_superuser`.
     """
     return User.objects.create_superuser(None, email, password)
+
+
+def migrate_usernames(stream=None, quiet=False):
+    """
+    Migrate all existing users to django-email-as-username hashed usernames.
+    If any users cannot be migrated an exception will be raised and the
+    migration will not run.
+    """
+    stream = stream or (quiet and open(os.devnull, 'w') or sys.stdout)
+
+    # Check all users can be migrated before applying migration
+    emails = set()
+    errors = []
+    for user in User.objects.all():
+        if not user.email:
+            errors.append("Cannot convert user '%s' because email is not "
+                          "set." % (user.username, ))
+        elif user.email.lower() in emails:
+            errors.append("Cannot convert user '%s' because email '%s' "
+                          "already exists." % (user.username, user.email))
+        else:
+            emails.add(user.email.lower())
+
+    # Cannot migrate.
+    if errors:
+        [stream.write(error + '\n') for error in errors]
+        raise Exception('django-email-as-username migration failed.')
+
+    # Can migrate just fine.
+    total = User.objects.count()
+    for user in User.objects.all():
+        user.save()
+
+    stream.write("Successfully migrated usernames for all %d users\n"
+                 % (total, ))
