@@ -147,6 +147,8 @@ Using `south` this might look something like:
 
 Now edit `0002_email_usernames.py`:
 
+    from emailusernames.utils import migrate_usernames
+
     def forwards(self, orm):
         "Write your forwards methods here."
         migrate_usernames()
