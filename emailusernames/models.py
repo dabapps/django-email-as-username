@@ -11,6 +11,7 @@ from emailusernames.utils import _email_to_username
 # and there's really no other way to get around it.
 def user_init_patch(self, *args, **kwargs):
     super(User, self).__init__(*args, **kwargs)
+    self._username = self.username
     self.username = self.email
 
 

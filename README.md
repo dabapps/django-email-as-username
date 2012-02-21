@@ -159,6 +159,11 @@ And finally apply the migration:
 Changelog
 =========
 
+1.4.1
+-----
+
+* Fix bug with displaying usernames correctly if migration fails
+
 1.4.0
 -----
 

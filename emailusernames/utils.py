@@ -4,7 +4,7 @@ import os
 import sys
 
 from django.contrib.auth.models import User
-from django.db import IntegrityError, transaction
+from django.db import IntegrityError
 
 
 # We need to convert emails to hashed versions when we store them in the
@@ -79,10 +79,10 @@ def migrate_usernames(stream=None, quiet=False):
     for user in User.objects.all():
         if not user.email:
             errors.append("Cannot convert user '%s' because email is not "
-                          "set." % (user.username, ))
+                          "set." % (user._username, ))
         elif user.email.lower() in emails:
             errors.append("Cannot convert user '%s' because email '%s' "
-                          "already exists." % (user.username, user.email))
+                          "already exists." % (user._username, user.email))
         else:
             emails.add(user.email.lower())
 
