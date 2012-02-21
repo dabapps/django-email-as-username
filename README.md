@@ -109,6 +109,8 @@ Using Django's built-in login view
 If you're using `django.contrib.auth.views.login` in your urlconf, you'll want to
 make sure you pass through `EmailAuthenticationForm` as an argument to the view.
 
+    from emailusernames.forms import EmailAuthenticationForm
+
     urlpatterns = patterns('',
         ...
         url(r'^auth/login$', 'django.contrib.auth.views.login',
@@ -140,7 +142,7 @@ Using `manage.py shell`:
 Run as a data migration
 -----------------------
 
-Using `south` this might look something like:
+Using `south`, and assuming you have an app named `accounts`, this might look something like:
 
     bash: python ./manage.py datamigration accounts email_usernames
     Created 0002_email_usernames.py.
