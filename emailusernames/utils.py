@@ -42,7 +42,7 @@ def create_user(email, password=None, is_staff=None, is_active=None):
     Use this instead of `User.objects.create_user`.
     """
     try:
-        user = User.objects.create_user(None, email, password)
+        user = User.objects.create_user(email, email, password)
     except IntegrityError, err:
         if err.message == 'column username is not unique':
             raise IntegrityError('user email is not unique')
