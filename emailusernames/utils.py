@@ -62,7 +62,7 @@ def create_superuser(email, password):
     Create a new superuser with the given email.
     Use this instead of `User.objects.create_superuser`.
     """
-    return User.objects.create_superuser(None, email, password)
+    return User.objects.create_superuser(email, email, password)
 
 
 def migrate_usernames(stream=None, quiet=False):
