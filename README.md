@@ -17,6 +17,11 @@ Allows you to treat users as having only email addresses, instead of usernames.
 3. Overides the `createsuperuser` command to create users with email only.
 4. Treats email authentication as case-insensitive.
 
+Requirements
+============
+
+Known to work with Django 1.3, 1.4  (Note: *1.4 support not yet pushed to PyPI*)
+
 Installation
 ============
 
@@ -162,6 +167,11 @@ And finally apply the migration:
 
 Changelog
 =========
+
+Dev
+---
+
+* Fix support for Django 1.4
 
 1.4.1
 -----
