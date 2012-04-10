@@ -16,21 +16,23 @@ def _email_to_username(email):
     return base64.urlsafe_b64encode(hashlib.sha256(email).digest())[:30]
 
 
-def get_user(email):
+def get_user(email, queryset=None):
     """
     Return the user with given email address.
     Note that email address matches are case-insensitive.
     """
-    return User.objects.get(username=_email_to_username(email))
+    if queryset is None:
+        queryset = User.objects
+    return queryset.get(username=_email_to_username(email))
 
 
-def user_exists(email):
+def user_exists(email, queryset=None):
     """
     Return True if a user with given email address exists.
     Note that email address matches are case-insensitive.
     """
     try:
-        get_user(email)
+        get_user(email, queryset)
     except User.DoesNotExist:
         return False
     return True

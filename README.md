@@ -42,6 +42,14 @@ Set `EmailAuthBackend` as your authentication backend:
         'emailusernames.backends.EmailAuthBackend',
     )
 
+Running the tests
+=================
+
+If you have cloned the source repo, rather than insta you can run the tests
+using the provided `manage.py`:
+
+    ./manage.py test
+
 Usage
 =====
 
@@ -70,6 +78,12 @@ user exists.
 
     if user_exists('someone@example.com'):
         ...
+
+Both functions also take an optional queryset argument if you want to filter
+the set of users to retrieve.
+
+    user = get_user('someone@example.com',
+                    queryset=User.objects.filter('profile__deleted=False'))
 
 Updating users
 --------------
@@ -168,11 +182,16 @@ And finally apply the migration:
 Changelog
 =========
 
+1.4.4
+-----
+
+* Add 'queryset' argument to `get_user`, `user_exists`
+
 1.4.3
 -----
 
 * Fix support for loading users from fixtures.
-  (Monkeypatch `save_base`, not `save`)
+  (Monkeypatch `User.save_base`, not `User.save`)
 
 1.4.2
 -----
