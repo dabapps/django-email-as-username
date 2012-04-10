@@ -7,6 +7,7 @@ Django Email as Username
 
 **See also:** [django-email-login][2], [django-email-usernames][3].
 
+
 Overview
 ========
 
@@ -17,10 +18,12 @@ Allows you to treat users as having only email addresses, instead of usernames.
 3. Overides the `createsuperuser` command to create users with email only.
 4. Treats email authentication as case-insensitive.
 
+
 Requirements
 ============
 
 Known to work with Django >= 1.3
+
 
 Installation
 ============
@@ -42,13 +45,6 @@ Set `EmailAuthBackend` as your authentication backend:
         'emailusernames.backends.EmailAuthBackend',
     )
 
-Running the tests
-=================
-
-If you have cloned the source repo, rather than insta you can run the tests
-using the provided `manage.py`:
-
-    ./manage.py test
 
 Usage
 =====
@@ -125,8 +121,9 @@ authenticating, creating and updating users:
 Using Django's built-in login view
 ----------------------------------
 
-If you're using `django.contrib.auth.views.login` in your urlconf, you'll want to
-make sure you pass through `EmailAuthenticationForm` as an argument to the view.
+If you're using `django.contrib.auth.views.login` in your urlconf, you'll want
+to make sure you pass through `EmailAuthenticationForm` as an argument to
+the view.
 
     from emailusernames.forms import EmailAuthenticationForm
 
@@ -137,16 +134,18 @@ make sure you pass through `EmailAuthenticationForm` as an argument to the view.
         ...
     )
 
+
 Migrating existing projects
 ===========================
 
 `emailusernames` includes a function you can use to easily migrate existing
 projects.
 
-The migration will refuse to run if there are any users that it cannot migrate either because they do not have an email set, or because there exists a duplicate email for more than one user.
+The migration will refuse to run if there are any users that it cannot migrate
+either because they do not have an email set, or because there exists a
+duplicate email for more than one user.
 
 There are two ways you might choose to run this migration.
-
 
 Run the update manually
 -----------------------
@@ -161,7 +160,8 @@ Using `manage.py shell`:
 Run as a data migration
 -----------------------
 
-Using `south`, and assuming you have an app named `accounts`, this might look something like:
+Using `south`, and assuming you have an app named `accounts`, this might look
+something like:
 
     bash: python ./manage.py datamigration accounts email_usernames
     Created 0002_email_usernames.py.
@@ -178,6 +178,18 @@ And finally apply the migration:
 
 	python ./manage.py migrate accounts
 
+
+Running the tests
+=================
+
+If you have cloned the source repo, you can run the tests using the
+provided `manage.py`:
+
+    ./manage.py test
+
+Note that this application (unsurprisingly) breaks the existing
+`django.contrib.auth` tests.  If your test suite currently includes those
+tests you'll need to find a way to explicitly disable them.
 
 Changelog
 =========
