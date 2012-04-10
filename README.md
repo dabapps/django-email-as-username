@@ -20,7 +20,7 @@ Allows you to treat users as having only email addresses, instead of usernames.
 Requirements
 ============
 
-Known to work with Django 1.3, 1.4  (Note: *1.4 support not yet pushed to PyPI*)
+Known to work with Django >= 1.3
 
 Installation
 ============
@@ -168,8 +168,8 @@ And finally apply the migration:
 Changelog
 =========
 
-Dev
----
+1.4.2
+-----
 
 * Fix support for Django 1.4
 
