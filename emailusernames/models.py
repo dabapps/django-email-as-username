@@ -17,12 +17,12 @@ def user_init_patch(self, *args, **kwargs):
 
 def user_save_patch(self, *args, **kwargs):
     self.username = _email_to_username(self.email)
-    super(User, self).save(*args, **kwargs)
+    super(User, self).save_base(*args, **kwargs)
     self.username = self.email
 
 
 User.__init__ = user_init_patch
-User.save = user_save_patch
+User.save_base = user_save_patch
 
 # Monkey-path the admin site to use a custom login form
 AdminSite.login_form = EmailAdminAuthenticationForm
