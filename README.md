@@ -168,6 +168,12 @@ And finally apply the migration:
 Changelog
 =========
 
+1.4.3
+-----
+
+* Fix support for loading users from fixtures.
+  (Monkeypatch `save_base`, not `save`)
+
 1.4.2
 -----
 
