@@ -1,8 +1,9 @@
 {% extends "admin/base_site.html" %}
 {% load i18n %}
+{% load static %}
 
 {% block extrastyle %}{% load adminmedia %}{{ block.super }}
-<link rel="stylesheet" type="text/css" href="{% admin_media_prefix %}css/login.css" />
+<link rel="stylesheet" type="text/css" href="{% get_static_prefix %}admin/css/login.css" />
 <style type="text/css">
   .login .form-row #id_email {
     width: 14em;
