@@ -208,6 +208,13 @@ tests you'll need to find a way to explicitly disable them.
 Changelog
 =========
 
+1.4.6
+-----
+
+* EmailAuthenticationForm takes request as first argument, same as Django's
+  AuthenticationForm.  Now fixed so it won't break if you didn't specify
+  data as a kwarg.
+
 1.4.5
 -----
 
