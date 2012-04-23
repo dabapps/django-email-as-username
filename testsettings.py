@@ -6,9 +6,9 @@ DATABASES = {
 }
 
 INSTALLED_APPS = (
-    'emailusernames',
     'django.contrib.auth',
     'django.contrib.contenttypes',
+    'emailusernames',
 )
 
 AUTHENTICATION_BACKENDS = (
