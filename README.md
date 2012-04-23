@@ -194,6 +194,12 @@ tests you'll need to find a way to explicitly disable them.
 Changelog
 =========
 
+1.4.5
+-----
+
+* Email form max lengths should be 75 chars, not 70 chars.
+* Use `get_static_prefix` (Supports 1.3 and 1.4.), not `admin_media_prefix`.
+
 1.4.4
 -----
 
