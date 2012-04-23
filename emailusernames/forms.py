@@ -20,8 +20,8 @@ class EmailAuthenticationForm(AuthenticationForm):
     message_incorrect_password = ERROR_MESSAGE
     message_inactive = ERROR_MESSAGE_INACTIVE
 
-    def __init__(self, *args, **kwargs):
-        super(EmailAuthenticationForm, self).__init__(*args, **kwargs)
+    def __init__(self, request=None, *args, **kwargs):
+        super(EmailAuthenticationForm, self).__init__(request, *args, **kwargs)
         del self.fields['username']
 
     def clean(self):
