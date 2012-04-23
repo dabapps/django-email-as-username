@@ -33,6 +33,7 @@ Install from PyPI:
     pip install django-email-as-username
 
 Add 'emailusernames' to INSTALLED_APPS.
+Make sure to include it further down the list than 'django.contrib.auth'.
 
     INSTALLED_APPS = (
         ...
@@ -133,6 +134,19 @@ the view.
             {'authentication_form': EmailAuthenticationForm}, name='login'),
         ...
     )
+
+
+Management commands
+===================
+
+`emailusernames` will patch up the `syncdb` and `createsuperuser` managment
+commands, to ensure that they take email usernames.
+
+    bash: ./manage.py syncdb
+    ...
+    You just installed Django's auth system, which means you don't have any superusers defined.
+    Would you like to create one now? (yes/no): yes
+    E-mail address:
 
 
 Migrating existing projects
