@@ -13,7 +13,7 @@ from django.db import IntegrityError
 # arbitrary emails.
 def _email_to_username(email):
     email = email.lower()  # Emails should be case-insensitive unique
-    return base64.urlsafe_b64encode(hashlib.sha256(email).digest())[:30]
+    return base64.urlsafe_b64encode(hashlib.sha256(email.encode('utf8', 'ignore').digest())[:30]
 
 
 def get_user(email, queryset=None):
