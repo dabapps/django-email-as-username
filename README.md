@@ -208,6 +208,15 @@ tests you'll need to find a way to explicitly disable them.
 Changelog
 =========
 
+1.5.0
+-----
+
+**To upgrade from <=1.4.6 you must also run the username migration
+as described above.**
+
+*  Version bump, since the username hashes changed from 1.4.6 to 1.4.7.  (Bumping to 1.5 should make it more obvious that users should check the changelog before upgrading.)
+
+
 1.4.8
 -----
 
