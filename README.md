@@ -208,6 +208,17 @@ tests you'll need to find a way to explicitly disable them.
 Changelog
 =========
 
+1.4.8
+-----
+
+* Fix syntax error from 1.4.7
+
+1.4.7
+-----
+
+* Support for international domain names.
+* Fix auto-focus on login forms.
+
 1.4.6
 -----
 
