@@ -17,6 +17,7 @@ Allows you to treat users as having only email addresses, instead of usernames.
 2. Patches the Django admin to handle email based user authentication.
 3. Overides the `createsuperuser` command to create users with email only.
 4. Treats email authentication as case-insensitive.
+5. Correctly supports internationalised email addresses.
 
 
 Requirements
@@ -32,8 +33,8 @@ Install from PyPI:
 
     pip install django-email-as-username
 
-Add 'emailusernames' to INSTALLED_APPS.
-Make sure to include it further down the list than 'django.contrib.auth'.
+Add `emailusernames` to `INSTALLED_APPS`.
+Make sure to include it further down the list than `django.contrib.auth`.
 
     INSTALLED_APPS = (
         ...
