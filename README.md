@@ -5,7 +5,7 @@ Django Email as Username
 
 **Author:** Tom Christie, [@_tomchristie][1].
 
-**See also:** [django-email-login][2], [django-email-usernames][3].
+**See also:** [django-email-login][2], [django-email-usernames][3], [django-user-accounts][4].
 
 
 Overview
@@ -328,3 +328,5 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 [1]: http://twitter.com/_tomchristie
 [2]: https://bitbucket.org/tino/django-email-login
 [3]: https://bitbucket.org/hakanw/django-email-usernames
+[4]: https://github.com/pinax/django-user-accounts/
+
