@@ -8,8 +8,6 @@ class EmailAuthBackend(ModelBackend):
 
     """Allow users to log in with their email address"""
 
-    supports_inactive_user = True
-
     def authenticate(self, email=None, password=None):
         try:
             user = get_user(email)
