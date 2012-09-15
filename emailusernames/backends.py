@@ -1,14 +1,14 @@
 from django.contrib.auth.models import User
+from django.contrib.auth.backends import ModelBackend
+
 from emailusernames.utils import get_user
 
 
-class EmailAuthBackend(object):
+class EmailAuthBackend(ModelBackend):
 
     """Allow users to log in with their email address"""
 
-    supports_inactive_user = False
-    supports_anonymous_user = False
-    supports_object_permissions = False
+    supports_inactive_user = True
 
     def authenticate(self, email=None, password=None):
         try:
