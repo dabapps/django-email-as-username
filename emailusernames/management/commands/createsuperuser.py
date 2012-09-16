@@ -62,6 +62,7 @@ class Command(BaseCommand):
                     except exceptions.ValidationError:
                         sys.stderr.write("Error: That e-mail address is invalid.\n")
                         email = None
+                        continue
 
                     try:
                         get_user(email)
