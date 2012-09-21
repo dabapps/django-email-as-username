@@ -5,7 +5,7 @@ from emailusernames.models import unmonkeypatch_user
 class Command(loaddata.Command):
 
     """
-    Override the built-in loadded command to un-monkeypatch the User
+    Override the built-in loaddata command to un-monkeypatch the User
     model before loading, to allow usernames to be loaded correctly
     """
 
