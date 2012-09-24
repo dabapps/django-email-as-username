@@ -23,6 +23,7 @@ class EmailAuthenticationForm(AuthenticationForm):
     def __init__(self, request=None, *args, **kwargs):
         super(EmailAuthenticationForm, self).__init__(request, *args, **kwargs)
         del self.fields['username']
+        self.fields.keyOrder = ['email', 'password']
 
     def clean(self):
         email = self.cleaned_data.get('email')
