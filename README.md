@@ -209,6 +209,14 @@ tests you'll need to find a way to explicitly disable them.
 Changelog
 =========
 
+1.6.0
+-----
+
+* Change field ordering in auth forms.
+* Fix handling of invalid emails in `createsuperuser` command.
+* `EmailAuthBackend` inherits from `ModelBackend`, fixing some permissions issues.
+* Fix `loaddata` and `savedata` fixture commands.
+
 1.5.1
 -----
 **To upgrade from <=1.4.6 you must also run the username migration
