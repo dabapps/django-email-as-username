@@ -209,6 +209,11 @@ tests you'll need to find a way to explicitly disable them.
 Changelog
 =========
 
+1.6.1
+-----
+
+* Fix screwed up packaging.
+
 1.6.0
 -----
 
