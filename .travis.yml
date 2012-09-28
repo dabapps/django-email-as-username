@@ -7,5 +7,4 @@ env:
   - DJANGO_VERSION=1.4
 install:
   - pip install -q Django==$DJANGO_VERSION --use-mirrors
-  - pip install -q -r requirements.txt --use-mirrors
 script: python manage.py test
