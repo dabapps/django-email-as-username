@@ -7,6 +7,7 @@ Django Email as Username
 
 **See also:** [django-email-login][2], [django-email-usernames][3], [django-user-accounts][4].
 
+[![Build Status](https://secure.travis-ci.org/dabapps/django-email-as-username.png)][travis]
 
 Overview
 ========
