@@ -210,6 +210,12 @@ tests you'll need to find a way to explicitly disable them.
 Changelog
 =========
 
+1.6.2
+-----
+
+* Fix broken tests
+* Added travis config
+
 1.6.1
 -----
 
