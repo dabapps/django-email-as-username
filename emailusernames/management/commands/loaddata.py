@@ -1,5 +1,5 @@
 from django.core.management.commands import loaddata
-from emailusernames.models import unmonkeypatch_user
+from emailusernames.models import unmonkeypatch_user, monkeypatch_user
 
 
 class Command(loaddata.Command):
@@ -11,4 +11,7 @@ class Command(loaddata.Command):
 
     def handle(self, *args, **kwargs):
         unmonkeypatch_user()
-        return super(Command, self).handle(*args, **kwargs)
+        ret = super(Command, self).handle(*args, **kwargs)
+        monkeypatch_user()
+        return ret
+        
