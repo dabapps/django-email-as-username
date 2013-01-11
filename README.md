@@ -46,6 +46,8 @@ Set `EmailAuthBackend` as your authentication backend:
 
     AUTHENTICATION_BACKENDS = (
         'emailusernames.backends.EmailAuthBackend',
+        # Uncomment the following to make Django tests pass:
+        # 'django.contrib.auth.backends.ModelBackend',
     )
 
 
