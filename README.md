@@ -3,7 +3,7 @@ Django Email as Username
 
 **User authentication with email addresses instead of usernames.**
 
-**Author:** Tom Christie, [@_tomchristie][tom-twitter].
+**Author:** Tom Christie, [@_tomchristie][twitter].
 
 **See also:** [django-email-login], [django-email-usernames], [django-user-accounts].
 
@@ -346,9 +346,9 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-[tom-twitter]: http://twitter.com/_tomchristie
+[twitter]: http://twitter.com/_tomchristie
 [django-email-login]: https://bitbucket.org/tino/django-email-login
 [django-email-usernames]: https://bitbucket.org/hakanw/django-email-usernames
 [django-user-accounts]: https://github.com/pinax/django-user-accounts/
-[travis]: http://travis-ci.org/tomchristie/django-rest-framework?branch=restframework2
+[travis]: http://travis-ci.org/dabapps/django-email-as-username?branch=master
 [build-status-image]: https://secure.travis-ci.org/dabapps/django-email-as-username.png
