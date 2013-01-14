@@ -90,6 +90,13 @@ class Command(BaseCommand):
                 sys.stderr.write("\nOperation cancelled.\n")
                 sys.exit(1)
 
-        create_superuser(email, password)
+        # Make Django's tests work by accepting a username through
+        # call_command() but not through manage.py
+        username = options.get('username', None)
+        if username is None:
+            create_superuser(email, password)
+        else:
+            User.objects.create_superuser(username, email, password)
+
         if verbosity >= 1:
             self.stdout.write("Superuser created successfully.\n")
