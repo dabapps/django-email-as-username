@@ -88,6 +88,12 @@ class EmailUserCreationForm(UserCreationForm):
             raise forms.ValidationError(_("A user with that email already exists."))
         return email
 
+    def save(self, commit=True):
+        # Ensure that the username is set to the email address provided,
+        # so the user_save_patch() will keep things in sync.
+        self.instance.username = self.instance.email
+        return super(EmailUserCreationForm, self).save(commit=commit)
+
 
 class EmailUserChangeForm(UserChangeForm):
     """

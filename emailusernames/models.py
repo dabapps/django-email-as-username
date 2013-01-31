@@ -12,13 +12,27 @@ from emailusernames.utils import _email_to_username
 def user_init_patch(self, *args, **kwargs):
     super(User, self).__init__(*args, **kwargs)
     self._username = self.username
-    self.username = self.email
+    if self.username == _email_to_username(self.email):
+        # Username should be replaced by email, since the hashes match
+        self.username = self.email
 
 
 def user_save_patch(self, *args, **kwargs):
-    self.username = _email_to_username(self.email)
-    super(User, self).save_base(*args, **kwargs)
-    self.username = self.email
+    email_as_username = (self.username.lower() == self.email.lower())
+    if self.pk is not None:
+        old_user = self.__class__.objects.get(pk=self.pk)
+        email_as_username = (
+            email_as_username or
+            ('@' in self.username and old_user.username == old_user.email)
+        )
+
+    if email_as_username:
+        self.username = _email_to_username(self.email)
+    try:
+        super(User, self).save_base(*args, **kwargs)
+    finally:
+        if email_as_username:
+            self.username = self.email
 
 
 original_init = User.__init__
