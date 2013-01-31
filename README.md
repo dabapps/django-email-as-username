@@ -9,6 +9,12 @@ Django Email as Username
 
 [![Build Status][build-status-image]][travis]
 
+---
+
+**Note**: As of Django 1.5 onwards you should consider using a [custom user model][docs] rather than using the `django-email-as-username` package.
+
+---
+
 Overview
 ========
 
@@ -210,11 +216,16 @@ tests you'll need to find a way to explicitly disable them.
 Changelog
 =========
 
+1.6.3
+-----
+
+* Fix issue when saving users via admin.
+
 1.6.2
 -----
 
-* Fix broken tests
-* Added travis config
+* Fix broken tests.
+* Added travis config.
 
 1.6.1
 -----
@@ -350,5 +361,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 [django-email-login]: https://bitbucket.org/tino/django-email-login
 [django-email-usernames]: https://bitbucket.org/hakanw/django-email-usernames
 [django-user-accounts]: https://github.com/pinax/django-user-accounts/
-[travis]: http://travis-ci.org/tomchristie/django-rest-framework?branch=restframework2
+[travis]: http://travis-ci.org/tomchristie/django-email-as-username?branch=master
 [build-status-image]: https://secure.travis-ci.org/dabapps/django-email-as-username.png
+[docs]: https://docs.djangoproject.com/en/dev/topics/auth/customizing/#auth-custom-user
