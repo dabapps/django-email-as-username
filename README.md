@@ -336,7 +336,7 @@ as described above.**
 License
 =======
 
-Copyright © 2012, DabApps.
+Copyright © 2012-2013, DabApps.
 
 All rights reserved.
 
