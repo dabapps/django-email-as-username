@@ -105,6 +105,7 @@ def migrate_usernames(stream=None, quiet=False):
     # Can migrate just fine.
     total = User.objects.count()
     for user in User.objects.all():
+        user.username = _email_to_username(user.email)
         user.save()
 
     stream.write("Successfully migrated usernames for all %d users\n"
