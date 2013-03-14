@@ -218,9 +218,10 @@ tests you'll need to find a way to explicitly disable them.
 Changelog
 =========
 
-Master
-------
+1.6.5
+-----
 
+* Liberal `authenticate()` parameters, fixes some 3rd party integrations.
 * Fix templatetag compatibility with Django 1.5
 * Cleanup IntegrityError description for PostgreSQL 9.1
 
