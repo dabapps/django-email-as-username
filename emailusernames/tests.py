@@ -44,6 +44,14 @@ class ExistingUserTests(TestCase):
         auth = authenticate(email=self.email.upper(), password=self.password)
         self.assertEquals(self.user, auth)
 
+    def test_user_can_authenticate_with_username_parameter(self):
+        auth = authenticate(username=self.email, password=self.password)
+        self.assertEquals(self.user, auth)
+        # Invalid username should be ignored
+        auth = authenticate(email=self.email, password=self.password,
+                            username='invalid')
+        self.assertEquals(self.user, auth)
+
     def test_user_emails_are_unique(self):
         with self.assertRaises(IntegrityError) as ctx:
             create_user(self.email, self.password)
