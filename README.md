@@ -218,6 +218,12 @@ tests you'll need to find a way to explicitly disable them.
 Changelog
 =========
 
+Master
+------
+
+* Fix templatetag compatibility with Django 1.5
+* Cleanup IntegrityError description for PostgreSQL 9.1
+
 1.6.4
 -----
 
