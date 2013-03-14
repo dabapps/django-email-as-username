@@ -10,9 +10,9 @@ class EmailAuthBackend(ModelBackend):
 
     def authenticate(self, email=None, password=None, **kwargs):
         # Some authenticators expect to authenticate by 'username'
-        if kwargs.get('username'):
-            email = kwargs['username']
-            
+        if email is None:
+            email = kwargs.get('username')
+
         try:
             user = get_user(email)
             if user.check_password(password):
