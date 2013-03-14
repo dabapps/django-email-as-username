@@ -1,6 +1,7 @@
 import base64
 import hashlib
 import os
+import re
 import sys
 
 from django.contrib.auth.models import User
@@ -55,7 +56,8 @@ def create_user(email, password=None, is_staff=None, is_active=None):
     try:
         user = User.objects.create_user(email, email, password)
     except IntegrityError, err:
-        if err.message in _DUPLICATE_USERNAME_ERRORS:
+        regexp = '|'.join(re.escape(e) for e in _DUPLICATE_USERNAME_ERRORS)
+        if re.match(regexp, err.message):
             raise IntegrityError('user email is not unique')
         raise
 
