@@ -218,6 +218,11 @@ tests you'll need to find a way to explicitly disable them.
 Changelog
 =========
 
+1.6.6
+-----
+
+* Allow users to be created with any explicitly specified primary key if required.
+
 1.6.5
 -----
 
