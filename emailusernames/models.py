@@ -20,11 +20,14 @@ def user_init_patch(self, *args, **kwargs):
 def user_save_patch(self, *args, **kwargs):
     email_as_username = (self.username.lower() == self.email.lower())
     if self.pk is not None:
-        old_user = self.__class__.objects.get(pk=self.pk)
-        email_as_username = (
-            email_as_username or
-            ('@' in self.username and old_user.username == old_user.email)
-        )
+        try:
+            old_user = self.__class__.objects.get(pk=self.pk)
+            email_as_username = (
+                email_as_username or
+                ('@' in self.username and old_user.username == old_user.email)
+            )
+        except self.__class__.DoesNotExist:
+            pass
 
     if email_as_username:
         self.username = _email_to_username(self.email)
