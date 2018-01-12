@@ -63,12 +63,12 @@ class ExistingUserTests(TestCase):
     def test_user_emails_are_unique(self):
         with self.assertRaises(IntegrityError) as ctx:
             create_user(self.email, self.password)
-        self.assertEquals(ctx.exception.message, 'user email is not unique')
+        self.assertEquals(ctx.exception.message, 'UNIQUE constraint failed: auth_user.username')
 
     def test_user_emails_are_case_insensitive_unique(self):
         with self.assertRaises(IntegrityError) as ctx:
             create_user(self.email.upper(), self.password)
-        self.assertEquals(ctx.exception.message, 'user email is not unique')
+        self.assertEquals(ctx.exception.message, 'UNIQUE constraint failed: auth_user.username')
 
     def test_user_unicode(self):
         self.assertEquals(unicode(self.user), self.email)
