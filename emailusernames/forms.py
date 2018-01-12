@@ -103,7 +103,7 @@ class EmailUserChangeForm(UserChangeForm):
 
     class Meta:
         model = User
-        fields = '__all__'
+        exclude = []
 
     def __init__(self, *args, **kwargs):
         super(EmailUserChangeForm, self).__init__(*args, **kwargs)
