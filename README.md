@@ -391,3 +391,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 [build-status-image]: https://secure.travis-ci.org/dabapps/django-email-as-username.png
 [docs]: https://docs.djangoproject.com/en/dev/topics/auth/customizing/#auth-custom-user
 [fork]: https://github.com/harmo/django-email-as-username
+
+## Code of conduct
+
+For guidelines regarding the code of conduct when contributing to this repository please review [https://www.dabapps.com/open-source/code-of-conduct/](https://www.dabapps.com/open-source/code-of-conduct/)
+
