@@ -17,6 +17,10 @@ A [new fork was created][fork] to support Django > 1.5 & Python 3 versions and k
 
 ---
 
+DEPRECATED
+========
+**PLEASE NOTE**: *This repository is no longer actively maintained or regularly used by DabApps and therefore should be considered deprecated. Please find alternative packages for your needs or feel free to create and maintain your own fork.*
+
 Overview
 ========
 
